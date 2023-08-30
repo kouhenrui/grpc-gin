@@ -1,0 +1,31 @@
+syntax = "proto3";
+package auth;
+option go_package = "proto/auth";
+
+
+
+service AuthInter{
+  rpc Login(LoginReq) returns(LoginRes);
+
+  rpc Info(InfoReq) returns(InfoRes);
+}
+
+message LoginReq{
+  string phone = 1;
+  string password = 2;
+  LoginType type = 3;
+}
+
+enum LoginType{
+  phone = 0;
+  sms = 1;
+}
+
+
+message LoginRes{
+  string jwt = 1;
+}
+message InfoReq{}
+message InfoRes{
+  string name = 1;
+}
